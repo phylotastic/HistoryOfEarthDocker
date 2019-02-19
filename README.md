@@ -45,6 +45,10 @@ You can run multiple instances using
 
 `docker-compose up -d --scale historyofearth=10` for ten instances
 
+## Ideas
+
+Could have it do the caching of maps when doing the creation of the docker thing (i.e., call R).
+
 ## Swarm
 
 Go to node where swarm is being managed. You can change the number of workers in replicas in docker-compose-swarm.yml

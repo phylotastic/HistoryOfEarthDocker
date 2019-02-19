@@ -26,6 +26,8 @@ apt-get install -y curl && \
 apt-get install -y wget && \
 apt-get install -y libmagick++-dev libmagickcore-dev libmagickwand-dev
 
+RUN apt-get install -y libgdal-dev
+
 # git lfs, from https://github.com/git-lfs/git-lfs/wiki/Installation and debugging the libssh2-1-dev install first.
 RUN apt install -y libssh-4 libssh-dev libssh2-1 libssh2-1-dev
 
@@ -58,19 +60,18 @@ RUN apt-get update
 
 RUN Rscript -e "install.packages('stringr')"
 
-RUN Rscript -e "install.packages('future')"
+RUN Rscript -e "remotes::install_github('LunaSare/gplatesr')"
 
+RUN Rscript -e "remotes::install_github('bomeara/paleotree', ref='developmentBranch')"
 
-RUN Rscript -e "devtools::install_github('LunaSare/gplatesr')"
-
-RUN Rscript -e "devtools::install_github('bomeara/paleotree', ref='developmentBranch')"
+RUN Rscript -e "remotes::install_github('jwiggi18/HistoryOfEarth')"
 
 
 RUN \
 cd /srv && \
 rm -r /srv/shiny-server/* && \
 git clone https://github.com/jwiggi18/HistoryOfEarth.git && \
-mv /srv/datelifeweb/* /srv/shiny-server/
+mv HistoryOfEarth/inst/shiny-examples/mainapp/* /srv/shiny-server/
 
 COPY shiny-server.conf /etc/init/shiny-server.conf
 
