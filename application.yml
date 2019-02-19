@@ -12,9 +12,8 @@ proxy:
     port-range-start: 20000
   specs:
   - id: historyofearth
-    container-cmd: ["R", "-e", "shinyproxy::historyofearth()"]
+    container-cmd: ["R", "-e", "HistoryOfEarth::runSite()"]
     container-image: bomeara/historyofearth
-    access-groups: scientists
 
 logging:
   file:
