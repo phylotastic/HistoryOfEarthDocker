@@ -17,8 +17,8 @@ services:
 
   datelife:
     image: bomeara/historyofearth
-    #ports:
-    #  - "80:3838"
+    ports:
+      - "80:3838"
     labels:
       - "historyofearth.worker"
     deploy:
