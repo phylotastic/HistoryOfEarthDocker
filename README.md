@@ -49,6 +49,18 @@ You can run multiple instances using
 
 Could have it do the caching of maps when doing the creation of the docker thing (i.e., call R).
 
+## shinyproxy
+
+This uses shinyproxy-2.1.0.jar from https://www.shinyproxy.io -- we store it locally for convenience but it's their code.
+
+application.yml is the configuration file for that.
+
+On the server, start
+
+`java -jar shinyproxy-2.1.0.jar` to start shinyproxy and the application
+
+
+
 ## Swarm
 
 Go to node where swarm is being managed. You can change the number of workers in replicas in docker-compose-swarm.yml
