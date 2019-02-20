@@ -14,6 +14,11 @@ proxy:
   - id: historyofearth
     container-cmd: ["R", "-e", "HistoryOfEarth::runSite()"]
     container-image: bomeara/historyofearth
+  - id: 01_hello
+    display-name: Hello Application
+    description: Application which demonstrates the basics of a Shiny app
+    container-cmd: ["R", "-e", "shinyproxy::run_01_hello()"]
+    container-image: openanalytics/shinyproxy-demo
 
 logging:
   file:
