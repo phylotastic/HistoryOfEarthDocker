@@ -3,7 +3,7 @@ Instructions to set up historyofearth server.
 
 Download HistoryOfEarthDocker.
 
-Go to HistoryOfEarthDocker directory and write
+Go to HistoryOfEarthDocker directory and write [note that DockerFileWithServer is traditional, like how datelife works; the new Dockerfile sets up as shinyproxy.io wants
 
 `docker build -t historyofearth .`
 
@@ -27,7 +27,7 @@ and then other machines can download it as is to run:
 
 `docker pull bomeara/historyofearth`
 
-And run it as
+And run it as (if doing the DockerfileWithServer, if doing shinyproxy, drop down to that section)
 
 `docker run -t -i -p 80:3838 bomeara/historyofearth`
 
@@ -49,13 +49,19 @@ You can run multiple instances using
 
 Could have it do the caching of maps when doing the creation of the docker thing (i.e., call R).
 
-## shinyproxy
+# shinyproxy
+
+Running on host omearashiny1.desktop.utk.edu
 
 This uses shinyproxy-2.1.0.jar from https://www.shinyproxy.io -- we store it locally for convenience but it's their code.
 
 When first setting up the host:
 
+`sudo systemctl edit docker` and paste in contents of override.conf. Or, once it's made, use the command below
+
 `sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf`
+
+Either way, then do
 
 `sudo systemctl daemon-reload`
 
@@ -68,7 +74,7 @@ On the server, start
 
 `java -jar shinyproxy-2.1.0.jar` to start shinyproxy and the application
 
-
+Then go to http://omearashiny1.desktop.utk.edu/8080
 
 ## Swarm
 

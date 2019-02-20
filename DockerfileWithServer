@@ -67,10 +67,14 @@ RUN Rscript -e "remotes::install_github('bomeara/paleotree', ref='developmentBra
 RUN Rscript -e "remotes::install_github('jwiggi18/HistoryOfEarth')"
 
 
-# following https://github.com/openanalytics/shinyproxy-demo
+RUN \
+cd /srv && \
+rm -r /srv/shiny-server/* && \
+git clone https://github.com/jwiggi18/HistoryOfEarth.git && \
+mv HistoryOfEarth/inst/shiny-examples/mainapp/* /srv/shiny-server/
 
-COPY Rprofile.site /usr/lib/R/etc/
+COPY shiny-server.conf /etc/init/shiny-server.conf
 
-EXPOSE 3838
+EXPOSE 80
 
-CMD ["R", "-e", "HistoryOfEarth::runSite()"]
+CMD ["/usr/bin/shiny-server.sh"]
