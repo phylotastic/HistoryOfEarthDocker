@@ -53,6 +53,15 @@ Could have it do the caching of maps when doing the creation of the docker thing
 
 This uses shinyproxy-2.1.0.jar from https://www.shinyproxy.io -- we store it locally for convenience but it's their code.
 
+When first setting up the host:
+
+`sudo cp override.conf /etc/systemd/system/docker.service.d/override.conf`
+
+`sudo systemctl daemon-reload`
+
+`sudo systemctl restart docker`
+
+
 application.yml is the configuration file for that.
 
 On the server, start
@@ -64,6 +73,8 @@ On the server, start
 ## Swarm
 
 Go to node where swarm is being managed. You can change the number of workers in replicas in docker-compose-swarm.yml
+
+
 
 `sudo docker stack deploy --compose-file docker-compose-swarm.yml historyofearth`
 
