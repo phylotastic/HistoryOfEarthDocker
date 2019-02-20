@@ -51,7 +51,7 @@ Once you've finished looking around, just type `exit` and you will be logged out
 
 You can run multiple instances using
 
-`docker-compose up -d --scale historyofearth=10` for ten instances
+`docker-compose up -d --scale historyofearth=32` for 32 instances
 
 ## Ideas
 
