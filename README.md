@@ -3,13 +3,21 @@ Instructions to set up historyofearth server.
 
 Download HistoryOfEarthDocker.
 
-Go to HistoryOfEarthDocker directory and write [note that DockerFileWithServer is traditional, like how datelife works; the new Dockerfile sets up as shinyproxy.io wants
+Go to HistoryOfEarthDocker directory and write [note that DockerfileWithServer is traditional, like how datelife works; the new Dockerfile sets up as shinyproxy.io wants Dockerfile]
+
+For shinyproxy:
 
 `docker build -t historyofearth .`
 
 To build with no cache
 
 `docker build -t historyofearth --no-cache .`
+
+
+For regular server:
+
+`docker build -f DockerfileWithServer -t historyofearth .`
+
 
 Then start the server with
 
@@ -67,6 +75,8 @@ Either way, then do
 
 `sudo systemctl restart docker`
 
+If getting rid of this approach, remove contents of /etc/systemd/system/docker.service.d/override.conf, then daemon reload and restart docker
+
 
 application.yml is the configuration file for that.
 
@@ -92,4 +102,4 @@ And stop it with
 
 `sudo docker stack rm historyofearth`
 
-For domain, *, @, www all resolve to `omearalab13.bio.utk.edu.` (yes, with a period after edu) using CNAME
+For domain, *, @, www all resolve to `omearashiny1.desktop.utk.edu.` (yes, with a period after edu) using CNAME
